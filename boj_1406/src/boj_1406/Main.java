@@ -1,13 +1,16 @@
 package boj_1406;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Stack;
 
 public class Main {
-	public static void main(String[] args) {
-		Scanner sc=new Scanner(System.in);
+	public static void main(String[] args) throws IOException {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder finish = new StringBuilder();
 		
-		String str = sc.nextLine();	//실행할 문자열
+		String str = br.readLine();	//실행할 문자열
 		
 		Stack<Character> left=new Stack<Character>();
 		Stack<Character> right=new Stack<Character>();
@@ -16,11 +19,11 @@ public class Main {
 			left.push(str.charAt(i));	//우선 st1에 넣는다.			
 		}
 		
-		int num = sc.nextInt();	//실행 시킬 명령어 갯수
+		int num = Integer.parseInt(br.readLine());	//실행 시킬 명령어 갯수
 		
-		for(int i=0;i<=num;i++)
+		for(int i=1;i<=num;i++)
 		{
-			String[] str2 =sc.nextLine().split(" ");
+			String[] str2 =br.readLine().split(" ");
 			
 			if(str2[0].equals("L"))	//커서를 왼쪽으로 한칸
 			{
@@ -52,8 +55,6 @@ public class Main {
 		{
 			right.push(left.pop());
 		}
-		
-		StringBuilder finish = new StringBuilder();
 		
 		while(!right.empty())
 		{
